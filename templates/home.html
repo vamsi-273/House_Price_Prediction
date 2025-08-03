@@ -1,118 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>ML API</title>
+    <title>House Price Prediction</title>
+
+    <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css?family=Pacifico"
+      href="https://fonts.googleapis.com/css?family=Pacifico|Arimo|Hind:300|Open+Sans+Condensed:300"
       rel="stylesheet"
-      type="text/css"
     />
-    <link
-      href="https://fonts.googleapis.com/css?family=Arimo"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Hind:300"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300"
-      rel="stylesheet"
-      type="text/css"
-    />
+
+    <style>
+      * {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arimo', sans-serif;
+  background: linear-gradient(to right, #1f1c2c, #928dab);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #f0f0f0;
+}
+
+.login {
+  background: #2c2c2e;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.login h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 10px 0;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background-color: #3c3c3e;
+  color: #f0f0f0;
+  font-size: 1em;
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #8e44ad;
+  box-shadow: 0 0 8px rgba(142, 68, 173, 0.6);
+  outline: none;
+}
+
+button {
+  background: linear-gradient(to right, #8e44ad, #3498db);
+  color: white;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: linear-gradient(to right, #3498db, #8e44ad);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #e0e0e0;
+}
+
+.form-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.form-column {
+  flex: 1;
+}
+
+.form-column input[type="text"] {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+    </style>
   </head>
 
   <body>
     <div class="login">
       <h1>House Price Prediction</h1>
 
-      <!-- Main Input For Receiving Query to our ML -->
       <form action="{{ url_for('predict')}}" method="post">
-        <input
-          type="text"
-          name="CRIM"
-          placeholder="CRIM"
-          required="required"
-        /><br />
-        <input
-          type="text"
-          name="ZN"
-          placeholder="ZN"
-          required="required"
-        /><br />
-        <input
-          type="text"
-          name="INDUS"
-          placeholder="INDUS"
-          required="required"
-        /><br />
-        <input
-          type="text"
-          name="CHAS"
-          placeholder="CHAS"
-          required="required"
-        /><br />
-        <input
-          type="text"
-          name="NOX"
-          placeholder="NOX"
-          required="required"
-        /><br />
-        <input
-          type="text"
-          name="RM"
-          placeholder="RM"
-          required="required"
-        /><br />
-        <input
-          type="text"
-          name="Age"
-          placeholder="Age"
-          required="required"
-        /><br />
-        <input
-          type="text"
-          name="DIS"
-          placeholder="DIS"
-          required="required"
-        /><br />
-        <input
-          type="text"
-          name="RAD"
-          placeholder="RAD"
-          required="required"
-        /><br />
-        <input
-          type="text"
-          name="TAX"
-          placeholder="TAX"
-          required="required"
-        /><br />
-        <input
-          type="text"
-          name="PTRATIO"
-          placeholder="PTRATIO"
-          required="required"
-        /><br />
-        <input type="text" name="B" placeholder="B" required="required" /><br />
-        <input
-          type="text"
-          name="LSTAT"
-          placeholder="LSTAT"
-          required="required"
-        /><br />
+        <div class="form-grid">
+          <div class="form-column">
+            <input type="text" name="CRIM" placeholder="CRIM" required /><br />
+            <input type="text" name="ZN" placeholder="ZN" required /><br />
+            <input
+              type="text"
+              name="INDUS"
+              placeholder="INDUS"
+              required
+            /><br />
+            <input type="text" name="CHAS" placeholder="CHAS" required /><br />
+            <input type="text" name="NOX" placeholder="NOX" required /><br />
+            <input type="text" name="RM" placeholder="RM" required /><br />
+            <input type="text" name="Age" placeholder="Age" required /><br />
+          </div>
+          <div class="form-column">
+            <input type="text" name="DIS" placeholder="DIS" required /><br />
+            <input type="text" name="RAD" placeholder="RAD" required /><br />
+            <input type="text" name="TAX" placeholder="TAX" required /><br />
+            <input
+              type="text"
+              name="PTRATIO"
+              placeholder="PTRATIO"
+              required
+            /><br />
+            <input type="text" name="B" placeholder="B" required /><br />
+            <input
+              type="text"
+              name="LSTAT"
+              placeholder="LSTAT"
+              required
+            /><br />
+          </div>
+        </div>
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">
-          Predict
-        </button>
+        <button type="submit">Predict</button>
       </form>
 
-      <br />
-      <br />
+      <div class="result">{{ prediction_text }}</div>
     </div>
-    {{prediction_text}}
   </body>
 </html>
