@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arimo', sans-serif;
+  background: linear-gradient(135deg, #121212, #1f1f2e);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #f0f0f0;
+}
+
+.login {
+  background: rgba(44, 44, 46, 0.95);
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+  width: 100%;
+  max-width: 720px; /* wider so placeholders fit */
+  text-align: center;
+}
+
+.login h1 {
+  font-family: 'Anton', sans-serif; /* Blocky, bold font */
+  font-size: 2.8em;
+  font-weight: 400; /* Anton is already bold */
+  margin-bottom: 25px;
+  color: #ffffff;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+}
+
+
+input[type="text"] {
+  width: 100%;
+  min-width: 320px; /* ensures enough width for long placeholder text */
+  padding: 12px 15px;
+  margin: 8px 0 16px;
+  border: 1px solid #555;
+  border-radius: 8px;
+  background-color: #2e2e2e;
+  color: #f0f0f0;
+  font-size: 0.95em;
+  transition: all 0.3s ease;
+  font-family: monospace; /* makes example numbers align nicely */
+}
+
+input[type="text"]::placeholder {
+  color: #bbbbbb;
+}
+
+input[type="text"]:focus {
+  border-color: #8e44ad;
+  box-shadow: 0 0 8px rgba(142, 68, 173, 0.6);
+  outline: none;
+}
+
+button {
+  background: linear-gradient(to right, #8e44ad, #3498db);
+  color: white;
+  border: none;
+  padding: 14px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  margin-top: 10px;
+}
+
+button:hover {
+  background: linear-gradient(to right, #3498db, #8e44ad);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #e0e0e0;
+}
+
+.form-grid {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px; /* extra space between columns */
+  margin-bottom: 20px;
+}
+
+.form-column {
+  flex: 1;
+  text-align: left;
+  font-size: 0.9em;
+  font-weight: bold;
+  color: #cccccc;
+}
+
+.form-column input[type="text"] {
+  width: 100%;
+}
